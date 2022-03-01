@@ -1,7 +1,7 @@
 const { Schema } = require("mongoose");
 
 // Subdocument schema; won't become a model, but used as schema for User model's `savedBooks` array
-const bookSchema = new Schema({
+const bookSchema = {
   authors: [
     {
       type: String,
@@ -26,6 +26,8 @@ const bookSchema = new Schema({
     type: String,
     required: true,
   },
-});
+};
 
-module.exports = bookSchema;
+const schema = new Schema(bookSchema);
+
+module.exports = schema;
