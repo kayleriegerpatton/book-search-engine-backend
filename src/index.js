@@ -1,11 +1,25 @@
-// ** IMPLEMENT APOLLO SERVER AND APPLY TO EXPRESS SERVER AS MIDDLEWARE
-
 const express = require("express");
 const path = require("path");
+const { ApolloServer } = require("apollo-server-express");
+
+const typeDefs = require("./schema");
+const resolvers = require("./resolvers");
 const db = require("./config/connection");
-const routes = require("./routes");
 
 const app = express();
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  // context,
+});
+
+// apply Apollo Server as middleware
+const startServer = async () => {
+  await server.start();
+  server.applyMiddleware({ app });
+};
+
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
@@ -16,8 +30,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../public")));
 }
 
-app.use(routes);
-
 db.once("open", () => {
-  app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+  app.listen(PORT, () =>
+    console.log(`🌍 Now listening on localhost:${PORT}${server.graphqlPath}`)
+  );
 });
+
+startServer();
