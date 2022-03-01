@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 const bookSchema = require("./Book");
 
+// db schema
 const userSchema = new Schema(
   {
     username: {
