@@ -1,18 +1,17 @@
-const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError, ApolloError } = require("apollo-server");
 const { User } = require("../models");
 
 const removeBook = async (_, { bookId }, context) => {
   //* accepts a book's bookId as a parameter; returns a User type
   try {
     if (!context.user) {
-      console.log("no context", context);
       throw new AuthenticationError("You must be logged in to delete a book.");
     }
 
     const updatedUser = await User.findByIdAndUpdate(
       context.user.id,
       {
-        $pull: { savedBooks: { bookId: bookId } },
+        $pull: { savedBooks: { bookId } },
       },
       { new: true }
     );
@@ -20,6 +19,7 @@ const removeBook = async (_, { bookId }, context) => {
     return updatedUser;
   } catch (error) {
     console.log(`[ERROR]: Failed to delete book | ${error.message}`);
+    throw new ApolloError("Failed to delete book.");
   }
 };
 

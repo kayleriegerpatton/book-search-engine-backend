@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   # RECORD TYPES
@@ -14,7 +14,7 @@ const typeDefs = gql`
     bookId: ID!
     authors: [String]!
     title: String!
-    description: String
+    description: String!
     image: String
     link: String
   }
