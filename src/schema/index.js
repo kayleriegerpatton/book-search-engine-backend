@@ -26,7 +26,7 @@ const typeDefs = gql`
 
   # QUERIES
   type Query {
-    me(userId: ID!): User
+    me: User
   }
 
   # MUTATION INPUTS
