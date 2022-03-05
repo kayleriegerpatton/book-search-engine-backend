@@ -22,6 +22,8 @@ const init = async () => {
     await mongoose.connect(connectionUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
     });
 
     const { url } = await server.listen({
