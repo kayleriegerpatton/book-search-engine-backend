@@ -31,7 +31,7 @@ The application implements a React.js front-end and an Apollo server making Grap
 
 ### Deployed Application
 
-This application is currently deployed on Heroku. [View the deployed application](https://thawing-cliffs-42043.herokuapp.com/)
+This application is currently deployed on Heroku. [View the deployed application](https://fast-ridge-49823.herokuapp.com/)
 
 ## Getting Started
 
