@@ -6,7 +6,6 @@
 
 - [Description](#description)
   - [Technologies](#technologies)
-  - [Deployed Application](#deployed-application)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Database Configuration](#database-configuration)
@@ -28,10 +27,6 @@ The application implements a React.js front-end and an Apollo server making Grap
 - Mongoose
 - GraphQL
 - React
-
-### Deployed Application
-
-This application is currently deployed on Heroku. [View the deployed application](https://fast-ridge-49823.herokuapp.com/)
 
 ## Getting Started
 
